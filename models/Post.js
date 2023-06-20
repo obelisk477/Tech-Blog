@@ -15,10 +15,13 @@ Post.init(
 
         },
         user_id: {
-
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         },
         date_created: {
-            
+
         }
     },
     {

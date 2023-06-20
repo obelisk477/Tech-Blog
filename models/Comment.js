@@ -14,9 +14,19 @@ Comment.init(
         content: {
 
         },
+        post_id: {
+            references: {
+                model: 'post',
+                key: 'id'
+            }
+        },
         user_id: {
-
+            references: {
+                model: 'user',
+                key: 'id'
+            }  
         }
+
     },
     {
         sequelize,
