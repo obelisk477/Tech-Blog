@@ -18,7 +18,6 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
-        console.log(req.session)
         const dbUserData = await User.findOne({
             where: {
                 username: req.body.username
@@ -48,13 +47,15 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/logout', async (req, res) => {
+router.get('/logout', async (req, res) => {
     try {
         if (req.session.loggedIn) {
             req.session.destroy(() => {
+                res.json({message: 'Successfully logged out'})
                 res.status(204).end()
             })
         } else {
+            res.json({message: 'You\'re not logged in'})
             res.status(404).end()
         }
     } catch (err) {
