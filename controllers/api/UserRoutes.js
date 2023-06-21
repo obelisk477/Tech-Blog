@@ -39,11 +39,8 @@ router.post('/login', async (req, res) => {
 
         req.session.save(() => {
             req.session.loggedIn = true;
-            console.log(req.session)
-
             res.status(200).json({user: dbUserData, message: 'You are now logged in!'})
         })
-
 
     } catch (err) {
         console.log(err)
@@ -51,9 +48,20 @@ router.post('/login', async (req, res) => {
     }
 })
 
-
+router.post('/logout', async (req, res) => {
+    try {
+        if (req.session.loggedIn) {
+            req.session.destroy(() => {
+                res.status(204).end()
+            })
+        } else {
+            res.status(404).end()
+        }
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
+})
 
 module.exports = router
 
-// create new user
-// get user for authenticating login
