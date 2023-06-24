@@ -18,6 +18,8 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
+        console.log(req.session)
+
         const dbUserData = await User.findOne({
             where: {
                 username: req.body.username
@@ -29,6 +31,7 @@ router.post('/login', async (req, res) => {
             return
         }
 
+
         const validPassword = await dbUserData.checkPassword(req.body.password)
 
         if (!validPassword) {
@@ -36,8 +39,11 @@ router.post('/login', async (req, res) => {
             return
         }
 
+        console.log('\nYou are here\n')
+
         req.session.save(() => {
             req.session.loggedIn = true;
+            console.log(req.session)
             res.status(200).json({user: dbUserData, message: 'You are now logged in!'})
         })
 

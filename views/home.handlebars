@@ -1,1 +1,7 @@
-<h2>Hello world</h2>
+{{#each posts as |post|}}
+    {{> post}}
+{{/each}}
+
+{{!-- // /
+// contains all posts (boxes) from all users sorted by recency of date, with title of blog name, "posted by {user} on {date}",
+// and blog content in box --}}

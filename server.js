@@ -30,3 +30,12 @@ app.use(routes)
 sequelize.sync({force: false}).then(() => {
     app.listen(PORT, () => console.log('Now listening...'))
 })
+
+// {force: !!process.env.SYNC_DB}
+
+// review app config vars in heroku in settings
+
+// name: SYNC_DB
+// val: true
+
+// heroku run seeds ...?
