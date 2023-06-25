@@ -3,6 +3,9 @@ const sequelize = require('../config/connection')
 
 class Post extends Model {}
 
+let date =  new Date()
+today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+
 Post.init(
     {
         id: {
@@ -25,13 +28,20 @@ Post.init(
                 model: 'user',
                 key: 'id'
             }
+        },
+        created_date: {
+            type: DataTypes.DATEONLY,
+            allowNull: false,
+            defaultValue: today
         }
+
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'post',  
+        modelName: 'post',
+        createdAt: false  
     }
 )
 

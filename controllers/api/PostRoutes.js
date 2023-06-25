@@ -2,8 +2,12 @@ const router = require('express').Router()
 const { User, Post, Comment } = require('../../models')
 
 
+
 // Create a post
 router.post('/', async (req, res) => {
+    let date =  new Date()
+    today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+
     try{
         console.log('\nCreating Post...\n')
 
@@ -12,7 +16,8 @@ router.post('/', async (req, res) => {
         const singlePost = await Post.create({
             title: req.body.title,
             content: req.body.content,
-            user_id: req.body.user_id
+            user_id: req.body.user_id,
+            created_date: today
         })
 
         console.log(singlePost)
@@ -30,7 +35,6 @@ router.get('/', async (req, res) => {
         const allPosts = await Post.findAll({
             include: [{model: User}, {model: Comment}]
         })
-        console.log(allPosts)
         res.status(200).json(allPosts)
     } catch (err) {
         res.status(500).json(err)

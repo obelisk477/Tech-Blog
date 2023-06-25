@@ -1,4 +1,8 @@
-<h2>Hello from dashboard</h2>
+{{#each posts as |postbars|}}
+    {{> postbars}}
+{{/each}}
+<script src="./js/dashboard.js"></script>
+
 
 {{!-- // /dashboard/new
 // box containing title field, content field, create button

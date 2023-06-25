@@ -14,13 +14,17 @@ nav {
     justify-content: left;
 }
 
-nav a {
+nav a, nav span {
     padding: 0 20px;
     text-decoration: none;
     flex-shrink: 0;
     color: rgb(181, 207, 214);
     margin: 0 75px;
     font-size: 1.5rem;
+}
+
+nav span:hover {
+    cursor: pointer;
 }
 
 nav a:visited {
@@ -53,16 +57,25 @@ main {
 
 .box {
     flex: 1 0 85%;
-    margin: 40px;
+    margin: 30px;
     border: 4px solid #3e3530;
     border-radius: 5px;
 }
 
 .box-header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     background-color:#3e3530;
     color: rgb(181, 207, 214);
+    font-size: 1rem;
+}
+
+.box-header > * {
+    margin: 15px 20px;
+}
+
+.individual-post{
+    cursor: pointer;
 }
 
 .box-content {
