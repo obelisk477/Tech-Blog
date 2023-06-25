@@ -5,22 +5,27 @@ const { User, Post, Comment } = require('../../models')
 
 // Create a post
 router.post('/', async (req, res) => {
+
+    const dbUserData = await User.findOne({
+        where: {
+            username: req.session.username
+        }
+    })
+
+    let thisUserId = dbUserData.dataValues.id
+
     let date =  new Date()
     today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
 
     try{
         console.log('\nCreating Post...\n')
 
-        console.log(req.body)
-
         const singlePost = await Post.create({
             title: req.body.title,
             content: req.body.content,
-            user_id: req.body.user_id,
+            user_id: thisUserId,
             created_date: today
         })
-
-        console.log(singlePost)
 
         res.status(200).json(singlePost)
 

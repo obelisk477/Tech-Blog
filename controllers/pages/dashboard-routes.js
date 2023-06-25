@@ -33,7 +33,7 @@ router.get('/', auth, async (req, res) => {
 })
 
 router.get('/new', auth,  async (req, res) => {
-    res.render('')
+    res.render('newpost')
 })
 
 router.get('/edit/:id', auth,  async (req, res) => {

@@ -24,6 +24,7 @@ Post.init(
         },
         user_id: {
             type: DataTypes.UUID,
+            allowNull: false,
             references: {
                 model: 'user',
                 key: 'id'

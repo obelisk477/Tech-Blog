@@ -3,7 +3,6 @@ let form = document.getElementById('edit-form')
 let deleteButton = document.getElementById('delete-post')
 
 
-
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
     const title = e.target[0].value.trim()
