@@ -100,4 +100,8 @@ main {
     background-color: #3e3530;
     color: rgb(181, 207, 214);
     font-size: 1.25rem;
+    border-radius: 4px;
+    width: 100%;
+    height: 35px;
+    cursor: pointer;
 }
