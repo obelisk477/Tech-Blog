@@ -38,7 +38,7 @@ router.get('/new', auth,  async (req, res) => {
 
 router.get('/edit/:id', auth,  async (req, res) => {
 
-    const singlePost = await Post.findByPk(req.params.id, {
+    let singlePost = await Post.findByPk(req.params.id, {
         include: [{model: User}, {model: Comment}]
     })
 
@@ -47,10 +47,10 @@ router.get('/edit/:id', auth,  async (req, res) => {
         return
     }
 
-    console.log(singlePost.get({plain: true}))
+    singlePost = singlePost.get({plain: true})
 
 
-    res.render('postedit', singlePost)
+    res.render('postedit', {singlePost})
 })
 
 module.exports = router

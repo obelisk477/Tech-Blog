@@ -1,13 +1,13 @@
 <div class="box">
     <div class="box-header">
-        <h2>Edit Post {{singlePost}}</h2>
+        <h2>Edit Post</h2>
     </div>
     <div class="box-content">
         <form id="edit-form">
             <label for="username">Title</label>
-            <input type="text" id="username" name="username" required minlength="4" maxlength="25" size="10" value={{title}}>
+            <input type="text" id="username" name="username" required minlength="4" maxlength="25" size="10" value="{{singlePost.title}}">
             <label for="password">Content</label>
-            <input type="text" id="password" name="password" required minlength="4" maxlength="25" size="10" value={{content}}>
+            <input type="text" id="password" name="password" required minlength="4" maxlength="25" size="10" value="{{singlePost.content}}">
             <input type="submit" value="Update" class="form-button">
         </form>
         <button id="delete-post" class="form-button">Delete</button>
