@@ -1,0 +1,14 @@
+<nav>
+<a href="/">Home</a>
+<a href="/dashboard">Dashboard</a>
+{{#unless signedIn}}
+<a href="/login">Login</a>
+{{/unless}}
+{{#if signedIn}}
+<span id="logout-button">Logout</span>
+{{/if}}
+</nav>
+<header>
+<h1>The Tech Blog</h1>
+</header>
+<h2>hello from viewpost</h2>
