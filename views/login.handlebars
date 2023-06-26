@@ -1,3 +1,17 @@
+<nav>
+<a href="/">Home</a>
+<a href="/dashboard">Dashboard</a>
+{{#unless signedIn}}
+<a href="/login">Login</a>
+{{/unless}}
+{{#if signedIn}}
+<span id="logout-button">Logout</span>
+{{/if}}
+
+</nav>
+<header>
+<h1>The Tech Blog</h1>
+</header>
 <div class="box">
     <div class="box-header">
         <h2>Login</h2>
@@ -7,7 +21,7 @@
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required minlength="4" maxlength="25" size="10">
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" required minlength="4" maxlength="25" size="10">
+            <input type="password" id="password" name="password" required minlength="4" maxlength="25" size="10">
             <input type="submit" value="Login!" class="form-button">
         </form>
         <a href="/signup">Sign up instead</a>

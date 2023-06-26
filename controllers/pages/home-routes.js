@@ -20,18 +20,13 @@ router.get('/', async (req, res) => {
         console.log(posts)
 
         res.render('home', {
-            posts
+            posts,
+            signedIn: req.session.loggedIn
         })
 
     } catch (err) {
         res.status(500).json(err)
     }
-
-
-
-
-
-
 })
 
 module.exports = router

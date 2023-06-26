@@ -22,7 +22,8 @@ router.get('/', auth, async (req, res) => {
         )
 
         res.render('dashboard', {
-            posts
+            posts,
+            signedIn: req.session.loggedIn
         })
 
     } catch (err) {
@@ -33,7 +34,7 @@ router.get('/', auth, async (req, res) => {
 })
 
 router.get('/new', auth,  async (req, res) => {
-    res.render('newpost')
+    res.render('newpost', {signedIn: req.session.loggedIn})
 })
 
 router.get('/edit/:id', auth,  async (req, res) => {
@@ -50,7 +51,7 @@ router.get('/edit/:id', auth,  async (req, res) => {
     singlePost = singlePost.get({plain: true})
 
 
-    res.render('postedit', {singlePost})
+    res.render('postedit', {singlePost, signedIn: req.session.loggedIn})
 })
 
 module.exports = router

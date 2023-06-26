@@ -10,7 +10,10 @@ const PORT = process.env.PORT || 3001
 const sessionConfig = {
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 60*60*1000
+    }
 }
 
 app.use(session(sessionConfig))
