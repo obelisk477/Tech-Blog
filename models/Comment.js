@@ -3,6 +3,9 @@ const sequelize = require('../config/connection')
 
 class Comment extends Model {}
 
+let date =  new Date()
+today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+
 Comment.init(
     {
         id: {
@@ -23,13 +26,18 @@ Comment.init(
                 key: 'id'
             }
         },
-        user_id: {
-            type: DataTypes.UUID,
+        poster_name: {
+            type: DataTypes.STRING,
             allowNull: false,
             references: {
                 model: 'user',
-                key: 'id'
+                key: 'username'
             }  
+        },
+        created_date: {
+            type: DataTypes.DATEONLY,
+            allowNull: false,
+            defaultValue: today
         }
 
     },
@@ -37,7 +45,8 @@ Comment.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'comment',  
+        modelName: 'comment',
+        createdAt: false    
     }
 )
 

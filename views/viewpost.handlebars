@@ -20,6 +20,9 @@
         {{singlePost.content}}
     </div>
 </div>
+{{#each comments as |comment|}}
+    {{> comment}}
+{{/each}}
 <div class="comment-box">
     <div class="comment-box-header">
         <p> </p>

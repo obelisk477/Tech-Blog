@@ -7,19 +7,14 @@ const { User, Post, Comment } = require('../../models')
 router.post('/', async (req, res) => {
 
     try{
-        const dbUserData = await User.findOne({
-            where: {
-                username: req.session.username
-            }
-        })
 
-        console.log(req.body)
-
+        let date =  new Date()
+        today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
 
         const newComment = await Comment.create({
             content: req.body.content,
             post_id: req.body.post_id,
-            user_id: dbUserData.dataValues.id
+            poster_name: req.session.username
         })
 
         if (!newComment) {

@@ -34,14 +34,15 @@ router.get('/view/:id', auth, async (req, res) => {
             res.status(404).json({message: 'Post not found!'})
             return
         }
-
+        console.log(singlePost)
         singlePost = singlePost.get({plain: true})
 
         console.log(singlePost)
 
         res.render('viewpost', {
             singlePost,
-            signedIn: req.session.loggedIn
+            signedIn: req.session.loggedIn,
+            comments: singlePost.comments
         })
 
     } catch (err) {
