@@ -11,4 +11,28 @@
 <header>
 <h1>The Tech Blog</h1>
 </header>
-<h2>hello from viewpost</h2>
+<div class="box" id="post-{{singlePost.id}}">
+    <div class="box-header">
+        <h2>{{singlePost.title}}</h2>
+        <p>Posted by {{singlePost.user.username}} on {{singlePost.created_date}}</p>
+    </div>
+    <div class="box-content">
+        {{singlePost.content}}
+    </div>
+</div>
+<div class="comment-box">
+    <div class="comment-box-header">
+        <p> </p>
+        </br>
+        </br>
+    </div>
+    <div class="comment-box-content">
+        <form id="comment-form">
+            <label for="comment">Comment</label>
+            <textarea id="comment" name="comment" rows="6" cols="50"></textarea>
+            <input type="submit" value="Submit" class="form-button">
+        </form>
+    </div>
+</div>
+<script src="../../js/view.js"></script>
+<script src="../../js/main.js"></script>

@@ -5,16 +5,30 @@ const { User, Post, Comment } = require('../../models')
 
 
 router.post('/', async (req, res) => {
-    try{
-        const newPost = await Comment.create(req.body)
 
-        if (!newPost) {
+    try{
+        const dbUserData = await User.findOne({
+            where: {
+                username: req.session.username
+            }
+        })
+
+        console.log(req.body)
+
+
+        const newComment = await Comment.create({
+            content: req.body.content,
+            post_id: req.body.post_id,
+            user_id: dbUserData.dataValues.id
+        })
+
+        if (!newComment) {
             res.status(404).json({message: "Comments not found"})
         }
 
-        console.log(newPost)
+        console.log(newComment)
 
-        res.status(200).json(newPost)
+        res.status(200).json(newComment)
 
     } catch (err) {
         res.status(500).json(err)
