@@ -10,7 +10,11 @@ router.get('/', async (req, res) => {
                     model: User,
                     attributes: ['username']
                 }
-            ]
+            ],
+            order: 
+                [['id','DESC']]
+            
+
         })   
         const posts = postData.map((post) =>
             post.get({plain: true})
@@ -24,7 +28,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/view/:id', auth, async (req, res) => {
+router.get('/view/:id', async (req, res) => {
     try{
         let singlePost = await Post.findByPk(req.params.id, {
             include: [{model: User}, {model: Comment}]

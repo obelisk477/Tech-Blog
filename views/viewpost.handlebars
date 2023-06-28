@@ -23,6 +23,7 @@
 {{#each comments as |comment|}}
     {{> comment}}
 {{/each}}
+{{#if signedIn}}
 <div class="comment-box">
     <div class="comment-box-header">
         <p> </p>
@@ -37,5 +38,6 @@
         </form>
     </div>
 </div>
+{{/if}}
 <script src="../../js/view.js"></script>
 <script src="../../js/main.js"></script>
