@@ -9,7 +9,6 @@ const app = express()
 const PORT = process.env.PORT || 3001
 const sequelize = require('./config/connection')
 
-
 const sessionConfig = {
     secret: process.env.SESSION_SECRET,
     cookie: {
@@ -27,7 +26,6 @@ const sessionConfig = {
 
 app.use(session(sessionConfig))
 
-
 const hbs = exphbs.create({})
 
 app.engine('handlebars', hbs.engine)
@@ -42,12 +40,3 @@ app.use(routes)
 sequelize.sync({force: false}).then(() => {
     app.listen(PORT, () => console.log('Now listening...'))
 })
-
-// {force: !!process.env.SYNC_DB}
-
-// review app config vars in heroku in settings
-
-// name: SYNC_DB
-// val: true
-
-// heroku run seeds ...?

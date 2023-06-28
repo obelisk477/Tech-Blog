@@ -1,9 +1,6 @@
-
-
 let form = document.getElementById('login-form')
 
-
-
+// Handle login form submit to authenticate user
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
     const username = e.target[0].value.trim()
@@ -21,8 +18,4 @@ form.addEventListener("submit", async function(e) {
             alert(response.statusText)
         }
     }
-
-
-
-
-  })
+})

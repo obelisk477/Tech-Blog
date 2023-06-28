@@ -1,13 +1,10 @@
 const router = require('express').Router()
-const { User, Post, Comment } = require('../../models')
+const { Comment } = require('../../models')
 
-
-
-
+// Create new comment
 router.post('/', async (req, res) => {
-
-    try{
-
+    try{    
+        // Get today date in format suiatble for UI
         let date =  new Date()
         today = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
 
@@ -18,10 +15,8 @@ router.post('/', async (req, res) => {
         })
 
         if (!newComment) {
-            res.status(404).json({message: "Comments not found"})
+            res.status(404).json({message: "Could not create comment"})
         }
-
-        console.log(newComment)
 
         res.status(200).json(newComment)
 
@@ -29,7 +24,6 @@ router.post('/', async (req, res) => {
         res.status(500).json(err)
     }
 })
-
 
 // Get comments by post id in req.body
 router.post('/postComments', async (req, res) => {
@@ -44,7 +38,6 @@ router.post('/postComments', async (req, res) => {
             res.status(404).json({message: "Comments not found"})
         }
 
-        console.log(allComments)
         res.status(200).json(allComments)
 
     } catch (err) {
@@ -52,9 +45,4 @@ router.post('/postComments', async (req, res) => {
     }
 })
 
-
 module.exports = router
-
-
-// create new comment
-// get all comments for a single post

@@ -2,6 +2,7 @@ const router = require('express').Router()
 const auth = require('../../utils/withAuth')
 const { Post, User, Comment } = require('../../models')
 
+// Get all posts and order by start date from newest to oldest and render on home screen
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -28,6 +29,7 @@ router.get('/', async (req, res) => {
     }
 })
 
+// Create single post view
 router.get('/view/:id', async (req, res) => {
     try{
         let singlePost = await Post.findByPk(req.params.id, {

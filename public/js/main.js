@@ -1,5 +1,6 @@
 let logoutButton = document.getElementById('logout-button')
 
+// Handle logout span button functionality & api call
 if (logoutButton) {
     logoutButton.addEventListener('click', async () => {
         const response = await fetch('/api/users/logout', {

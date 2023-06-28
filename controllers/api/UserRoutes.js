@@ -9,7 +9,6 @@ router.post('/', async (req, res) => {
         newUser.password = await bcrypt.hash(req.body.password, 10)
         const userData = await User.create(newUser)
 
-
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.username = req.body.username
@@ -38,7 +37,6 @@ router.post('/login', async (req, res) => {
             res.status(400).json({message: 'Incorrect email or password. Please try again!'})
             return
         }
-
 
         const validPassword = await dbUserData.checkPassword(req.body.password)
 
@@ -78,4 +76,3 @@ router.get('/logout', async (req, res) => {
 })
 
 module.exports = router
-

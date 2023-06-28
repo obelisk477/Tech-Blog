@@ -1,9 +1,6 @@
-
-
 let form = document.getElementById('new-post-form')
 
-
-
+// Handle form submit for creating new post in db
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
     const title = e.target[0].value.trim()
@@ -21,8 +18,4 @@ form.addEventListener("submit", async function(e) {
             alert(response.statusText)
         }
     }
-
-
-
-
-  })
+})

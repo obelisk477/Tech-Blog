@@ -3,6 +3,7 @@ const auth = require('../../utils/withAuth')
 const { User, Post, Comment } = require('../../models')
 const sequelize = require('sequelize')
 
+// Get all posts by username and send to dashboard view
 router.get('/', auth, async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -33,10 +34,12 @@ router.get('/', auth, async (req, res) => {
     
 })
 
+// Render new post screen
 router.get('/new', auth,  async (req, res) => {
     res.render('newpost', {signedIn: req.session.loggedIn})
 })
 
+// Render edit post screen
 router.get('/edit/:id', auth,  async (req, res) => {
 
     let singlePost = await Post.findByPk(req.params.id, {
@@ -49,7 +52,6 @@ router.get('/edit/:id', auth,  async (req, res) => {
     }
 
     singlePost = singlePost.get({plain: true})
-
 
     res.render('postedit', {singlePost, signedIn: req.session.loggedIn})
 })

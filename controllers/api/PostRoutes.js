@@ -6,6 +6,7 @@ const { User, Post, Comment } = require('../../models')
 // Create a post
 router.post('/', async (req, res) => {
 
+    // Get user id by username to add to Post.create call 
     const dbUserData = await User.findOne({
         where: {
             username: req.session.username
@@ -47,7 +48,6 @@ router.get('/', async (req, res) => {
 })
 
 // Get post by id
-
 router.get('/:id', async (req, res) => {
     try{
         const singlePost = await Post.findByPk(req.params.id, {
@@ -59,7 +59,6 @@ router.get('/:id', async (req, res) => {
             return
         }
 
-        console.log(singlePost)
         res.status(200).json(singlePost)
 
     } catch (err) {
@@ -67,6 +66,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+// Get all posts for specific user to be included in dashboard view
 router.post('/userPosts', async (req, res) => {
     try{
         const allPosts = await Post.findAll({
@@ -75,13 +75,13 @@ router.post('/userPosts', async (req, res) => {
             },
             include: [{model: User}, {model: Comment}]
         })
-        console.log(allPosts)
         res.status(200).json(allPosts)
     } catch (err) {
         res.status(500).json(err)
     }
 })
 
+// Update post by post id
 router.put('/:id', async (req, res) => {
     console.log(req.body)
     try{
@@ -102,7 +102,7 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-
+// Delete post by id
 router.delete('/:id', async (req, res) => {
     try{
         const postDeleteData = await Post.destroy({
@@ -123,5 +123,3 @@ router.delete('/:id', async (req, res) => {
 })
 
 module.exports = router
-
-// delete current post

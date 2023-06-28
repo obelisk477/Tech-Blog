@@ -1,12 +1,11 @@
 let form = document.getElementById('comment-form')
 
-
+// Handle form submit for adding comment to post and reload to same post
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
     
     let postId = document.querySelector('div[id*="post-"]').id.match(/\d+$/)[0]
     let commentText = e.target[0].value
-
 
     if (commentText) {
         const response = await fetch('/api/comments/', {
@@ -20,5 +19,4 @@ form.addEventListener("submit", async function(e) {
             alert(response.statusText)
         }
     }
-
 })

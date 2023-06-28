@@ -1,6 +1,6 @@
 let posts = [...document.querySelectorAll('.box')]
 
-
+// Handle clicks on posts on homepage
 posts.forEach(post => {
     post.style.cursor = "pointer"
     post.addEventListener('click', async (e) => {

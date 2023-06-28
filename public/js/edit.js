@@ -3,6 +3,7 @@ let form = document.getElementById('edit-form')
 let deleteButton = document.getElementById('delete-post')
 
 
+// Add event listenr for handling form submit to update a post
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
     const title = e.target[0].value.trim()
@@ -10,7 +11,7 @@ form.addEventListener("submit", async function(e) {
 
     let postNum = document.location.href.match(/\d+$/)[0]
 
-    if (username && password) {
+    if (title && content) {
         const response = await fetch(`/api/posts/${postNum}`, {
             method: 'PUT',
             body: JSON.stringify({title, content}),
@@ -24,6 +25,7 @@ form.addEventListener("submit", async function(e) {
     }
 })
 
+// Add event listener to button to delete a post
 deleteButton.addEventListener('click', async (e) => {
     e.preventDefault();
 

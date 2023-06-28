@@ -1,3 +1,4 @@
+// Redirect to login page where called for pages requiring login
 const withAuth = function (req, res, next) {
     if (!req.session.loggedIn) {
         res.redirect('/login')

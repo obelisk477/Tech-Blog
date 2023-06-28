@@ -1,9 +1,6 @@
-
-
 let form = document.getElementById('signup-form')
 
-
-
+// Handle form submit for creating new user in db
 form.addEventListener("submit", async function(e) {
     e.preventDefault();
     const username = e.target[0].value.trim()
